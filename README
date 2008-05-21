@@ -1,0 +1,14 @@
+ServerStatus
+============
+
+This plugin adds a Server Status Controller and views to support displaying which server this app is running on.
+
+After installing the plugin in the vendor/plugins/server_status directory, add the following line to config/routes.rb:
+
+  map.connect "server_status/:action/:id", :controller => "server_status"
+
+Then, going to "http://host/server_status" will display the hostname of the server this app is running on.
+
+
+
+Copyright (c) 2008 Dave Giunta, released under the MIT license
