@@ -1,14 +1,23 @@
-ServerStatus
-============
+Server Status Plugin
+====================
 
-This plugin adds a Server Status Controller and views to support displaying which server this app is running on.
+This plugin tries to solve one very specific problem. If you've deployed your Rails app to a cluster of load balanced webservers, often times your load balancer wants a single url for each app on each server, to check as a sign that each server is available for requests. Many times you'll just make the root page of your app that page. However, sometimes it's good to see that the app is being served from all your servers visually.
+
+Enter the server_status plugin.
+
+This plugin adds a Server Status Controller and View to support displaying which server this app is running on. It simply displays the message "The mongrel cluster is up on <servername>".
+
+
+Installation
+============
 
 After installing the plugin in the vendor/plugins/server_status directory, add the following line to config/routes.rb:
 
-  map.connect "server_status/:action/:id", :controller => "server_status"
+<code>
+map.connect "server_status/:action/:id", :controller => "server_status"
+</code>
 
-Then, going to "http://host/server_status" will display the hostname of the server this app is running on.
-
+Then, navigate to "/server_status" and you will see the message "The mongrel cluster is up on <servername>". Continue to refresh that page, and assuming your load balancing setup is working properly, you should see that servername cycle through each of your different servers as requests get routed around your cluster.
 
 
 Copyright (c) 2008 Dave Giunta, released under the MIT license
